@@ -1,7 +1,7 @@
 <template>
   <div id="homeViewId">
 
-    <div style="z-index:-1;position:absolute;top:0;background: #222331;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;">
+    <div style="z-index:-1;position:fixed;top:0;background: #222331;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;">
       <!-- 图片遮罩      -->
       <img src="../assets/深圳夜景4k壁纸_彼岸图网.jpg" alt="asd" style="position:absolute;width: 100%;opacity:0.23;animation: light 5s;z-index: -2;pointer-events: none">
 
@@ -34,14 +34,14 @@
       </div>
     </div>
 
-    <div style="width: 100vw;height: 100vh;pointer-events: none">
-      <!--      <div style="pointer-events: none">测试文字</div>-->
-    </div>
+<!--    <div style="width: 100vw;height: 100vh;pointer-events: none">-->
+<!--      &lt;!&ndash;      <div style="pointer-events: none">测试文字</div>&ndash;&gt;-->
+<!--    </div>-->
 
 
-    <div style="width: 100vw;height: 100vh;background: #fafafa">
-      HELLO WORLD!
-    </div>
+<!--    <div style="width: 100vw;height: 100vh;background: #fafafa">-->
+<!--      HELLO WORLD!-->
+<!--    </div>-->
   </div>
 </template>
 
