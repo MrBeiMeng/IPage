@@ -15,6 +15,16 @@
   src: url("./assets/font/Leefont蒙黑体.ttf");
 }
 
+@font-face {
+  font-family: "品如体";
+  src: url("./assets/font/品如手写体.ttf");
+}
+
+@font-face {
+  font-family: "云峰体";
+  src: url("./assets/font/云峰静龙行书.ttf");
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

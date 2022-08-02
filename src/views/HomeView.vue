@@ -1,47 +1,84 @@
 <template>
   <div id="homeViewId">
 
-    <div style="z-index:-1;position:fixed;top:0;background: #222331;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;">
-      <!-- 图片遮罩      -->
-      <img src="../assets/深圳夜景4k壁纸_彼岸图网.jpg" alt="asd" style="position:absolute;width: 100%;opacity:0.23;animation: light 5s;z-index: -2;pointer-events: none">
+    <div style="position:fixed;width: 100vw;height: 100vh;display: flex;z-index: -1">
+      <img src="../assets/深圳夜景4k壁纸_彼岸图网.jpg" alt="asd" style="position:absolute;width: 100%;z-index: -1;pointer-events: none;background: #222331;">
+    </div>
 
-      <div style="color: white;font-family: 蒙黑体;font-size: 52px;display: flex;align-items: baseline;text-shadow:black -2px 6px 6px;">
-        <div style="display: inline-block">
-          <div>
-            <span style="cursor: pointer">🪧</span><span>深圳之行</span>
+<!--  大型类似轮播  -->
+    <div style="height: 100vh;display: flex;flex-wrap: nowrap;align-items: center;flex-direction: row;overflow: scroll">
+      <div style="position:relative;top:0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-shrink:0">
+        <!-- 图片遮罩      -->
+        <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #222331;opacity:80%;animation: light 5s;"/>
+
+        <div style="color: white;font-family: 蒙黑体;font-size: 52px;display: flex;align-items: baseline;text-shadow:black -2px 6px 6px;">
+          <div style="display: inline-block">
+            <div>
+              <span style="cursor: pointer">🪧</span><span>深圳之行</span>
+            </div>
+            <div style="font-size: 10px;color: #636471">
+              Trip to Shenzhen
+            </div>
           </div>
-          <div style="font-size: 10px;color: #636471">
-            Trip to Shenzhen
+          <div style="display: inline-block">
+            <span style="border-bottom: #fbb427 3px solid;padding-bottom: 5px">第{{ dayPassed }}天</span>。
           </div>
         </div>
-        <div style="display: inline-block">
-          <span style="border-bottom: #fbb427 3px solid;padding-bottom: 5px">第{{ dayPassed }}天</span>。
+
+        <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: #636471;font-family: 蒙黑体">
+          Arrive at 2022/7/26 23:20
+        </div>
+
+        <div style="position:absolute;right: 20px;bottom: 20px;">
+          <!--      <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px;margin-right: 20px;cursor:pointer;" @click="handleDownload">-->
+          <!--        😋 我的github-->
+          <!--      </button>-->
+
+          <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px 0 6px;cursor:pointer;" @click="handleDownload">
+            😋 我的简历
+          </button>
         </div>
       </div>
 
-      <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: #636471;font-family: 蒙黑体">
-        Arrive at 2022/7/26 23:20
-      </div>
+      <div style="position:relative;top:0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-shrink:0">
+        <!-- 图片遮罩      -->
+        <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #222331;opacity:80%;animation: light 5s;"/>
 
-      <div style="position:absolute;right: 20px;bottom: 20px;">
-        <!--      <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px;margin-right: 20px;cursor:pointer;" @click="handleDownload">-->
-        <!--        😋 我的github-->
-        <!--      </button>-->
+        <div style="color: white;font-family: 品如体;font-size: 66px;display: flex;align-items: baseline;text-shadow:black -2px 6px 6px;">
+          <div style="display: inline-block">
+            <div>
+              <span style="cursor: pointer">🪧</span><span>深圳之行</span>
+            </div>
+            <div style="font-size: 10px;color: #636471">
+              Trip to Shenzhen
+            </div>
+          </div>
+          <div style="display: inline-block">
+            <span style="border-bottom: #fbb427 3px solid;padding-bottom: 5px">第{{ dayPassed }}天</span>。
+          </div>
+        </div>
 
-        <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px 0 6px;cursor:pointer;" @click="handleDownload">
-          😋 我的简历
-        </button>
+        <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: #636471;font-family: 蒙黑体">
+          Arrive at 2022/7/26 23:20
+        </div>
+
+        <div style="position:absolute;right: 20px;bottom: 20px;">
+          <!--      <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px;margin-right: 20px;cursor:pointer;" @click="handleDownload">-->
+          <!--        😋 我的github-->
+          <!--      </button>-->
+
+          <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px 0 6px;cursor:pointer;" @click="handleDownload">
+            😋 我的简历
+          </button>
+        </div>
       </div>
     </div>
 
-<!--    <div style="width: 100vw;height: 100vh;pointer-events: none">-->
-<!--      &lt;!&ndash;      <div style="pointer-events: none">测试文字</div>&ndash;&gt;-->
-<!--    </div>-->
+    <div style="width: 100vw;height: 100vh;background: #fafafa;">
+      热爱可抵岁月漫长。🦜
+    </div>
 
 
-<!--    <div style="width: 100vw;height: 100vh;background: #fafafa">-->
-<!--      HELLO WORLD!-->
-<!--    </div>-->
   </div>
 </template>
 
@@ -119,7 +156,7 @@ export default {
 }
 
 @keyframes light {
-  from{opacity:0}
-  to{opacity:0.23}
+  from{opacity:1}
+  to{opacity:0.80}
 }
 </style>
