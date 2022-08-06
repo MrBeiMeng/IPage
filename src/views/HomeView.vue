@@ -1,38 +1,66 @@
 <template>
   <div id="homeViewId">
 
-    <div style="position:fixed;width: 100vw;height: 100vh;display: flex;z-index: -1">
-      <img src="../assets/深圳夜景4k壁纸_彼岸图网.jpg" alt="asd" style="position:absolute;width: 100%;z-index: -1;pointer-events: none;background: #222331;">
-    </div>
+    <div style="height: 100vh;display: flex;flex-wrap: nowrap;align-items: center;flex-direction: row;overflow: scroll;background-color: #fafafa;" class="b-back-image">
+      <div style="position:relative;top:0;width: 100vw;height: 100vh;overflow: hidden;flex-shrink:0">
 
-<!--  大型类似轮播  -->
-    <div style="height: 100vh;display: flex;flex-wrap: nowrap;align-items: center;flex-direction: row;overflow: scroll">
-      <div style="position:relative;top:0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-shrink:0">
-        <!-- 图片遮罩      -->
-        <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #222331;opacity:80%;animation: light 5s;"/>
+        <!-- 左上角日期标志 -->
+        <div style="position:absolute;top: 100px;left: 100px;font-size: 30px;color: #6e158f">
+          {{ nowMoment.format("YYYY - M") }}
+        </div>
 
-        <div style="color: white;font-family: 蒙黑体;font-size: 52px;display: flex;align-items: baseline;text-shadow:black -2px 6px 6px;">
-          <div style="display: inline-block">
-            <div>
-              <span style="cursor: pointer">🪧</span><span>深圳之行</span>
-            </div>
-            <div style="font-size: 10px;color: #636471">
-              Trip to Shenzhen
+        <!-- 右上角标志 -->
+        <div style="position:absolute;top: 100px;right: 100px;font-size: 30px;color: gray;cursor: pointer;border-radius: 10px;border: 2px gray solid;display: flex;align-items: center;height: 42px">
+          <span style="font-size: 41px">☀</span><span>/🌙</span>
+        </div>
+
+        <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #fafafa;"/>
+
+        <div id="midContent" style="position:absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);user-select: none">
+
+          <!--进度条-->
+          <div style="width: 100%;background: rgb(223 223 225);height: 5px">
+            <!-- 进度条内部分 -->
+            <div :style="{width:(process + '%')}" style="transition: width 2s;background: #42b983;border-radius: 5px;height: 7px;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);transform: translateY(-20%)">
             </div>
           </div>
-          <div style="display: inline-block">
-            <span style="border-bottom: #fbb427 3px solid;padding-bottom: 5px">第{{ dayPassed }}天</span>。
+
+          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 867px;text-shadow: -7px 14px 20px #adadad;">
+            <div style="display: inline-block">
+              <div>
+                <span style="cursor: pointer;" @click="showComments" @dblclick.capture="addComments">🪧</span><span>深圳之行</span>
+              </div>
+              <div style="font-size: 12px;color: rgb(155 155 155);">
+                Trip to Shenzhen
+              </div>
+            </div>
+            <div style="display: inline-block">
+              <span style="border-bottom: #ffa644 10px solid;padding-bottom: 16px">第{{ dayPassed }}天</span>
+            </div>
           </div>
         </div>
 
-        <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: #636471;font-family: 蒙黑体">
+        <div style="position:absolute;bottom: 0;height: 100px;left: 50%;transform: translateX(-50%);margin-bottom: 120px">
+          <div style="position:relative;">
+            <div style="font-size: 21px;font-weight:bolder;color:#666666;line-height: 30px;position:relative;bottom:0;text-align: center;opacity:0;transform: translateY(100%)" id="comments">
+              <span>马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。</span> <br>
+              <span style="font-size: 16px;float: right">-- 席慕容 《青春》</span>
+<!--              <div style="position:absolute;right: 0;cursor: pointer;display: inline-block">-->
+<!--                ⬆️-->
+<!--              </div>-->
+
+<!--              <div style="position:absolute;right: 30px;cursor: pointer;display: inline-block">-->
+<!--                ⬇️-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+
+        <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: rgb(155 155 155);;font-family: 蒙黑体">
           Arrive at 2022/7/26 23:20
         </div>
 
         <div style="position:absolute;right: 20px;bottom: 20px;">
-          <!--      <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px;margin-right: 20px;cursor:pointer;" @click="handleDownload">-->
-          <!--        😋 我的github-->
-          <!--      </button>-->
 
           <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px 0 6px;cursor:pointer;" @click="handleDownload">
             😋 我的简历
@@ -40,38 +68,6 @@
         </div>
       </div>
 
-      <div style="position:relative;top:0;width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-shrink:0">
-        <!-- 图片遮罩      -->
-        <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #222331;opacity:80%;animation: light 5s;"/>
-
-        <div style="color: white;font-family: 品如体;font-size: 66px;display: flex;align-items: baseline;text-shadow:black -2px 6px 6px;">
-          <div style="display: inline-block">
-            <div>
-              <span style="cursor: pointer">🪧</span><span>深圳之行</span>
-            </div>
-            <div style="font-size: 10px;color: #636471">
-              Trip to Shenzhen
-            </div>
-          </div>
-          <div style="display: inline-block">
-            <span style="border-bottom: #fbb427 3px solid;padding-bottom: 5px">第{{ dayPassed }}天</span>。
-          </div>
-        </div>
-
-        <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: #636471;font-family: 蒙黑体">
-          Arrive at 2022/7/26 23:20
-        </div>
-
-        <div style="position:absolute;right: 20px;bottom: 20px;">
-          <!--      <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px;margin-right: 20px;cursor:pointer;" @click="handleDownload">-->
-          <!--        😋 我的github-->
-          <!--      </button>-->
-
-          <button style="font-size: 20px;color: #636471;font-family: 蒙黑体;padding: 0 10px 0 6px;cursor:pointer;" @click="handleDownload">
-            😋 我的简历
-          </button>
-        </div>
-      </div>
     </div>
 
     <div style="width: 100vw;height: 100vh;background: #fafafa;">
@@ -84,25 +80,52 @@
 
 <script>
 import moment from "moment";
+import anime from "animejs";
 
 export default {
   name: 'homeView',
   data(){
     return{
+      commentsDisplay:false,
       arriveMoment:moment("2022/7/26 23:20", "YYYY/MM/DD hh:mm"),
       nowMoment:null,
       dayPassed:0,
-      opacityNum:0
+      process:0
     }
   },
   mounted() {
     this.init();
     setInterval(()=>{
       this.init();
+      this.process = this.nowMoment.hour() / 24 * 100;
       console.log("A second passed ...")
     },1000)
   },
   methods:{
+    showComments(){
+      if (this.commentsDisplay){
+        anime({
+          targets: '#comments',
+          duration: 400,
+          opacity:0,
+          translateY: '100%',
+          easing: 'linear'
+        });
+      }else{
+        anime({
+          targets: '#comments',
+          duration: 500,
+          opacity:1,
+          translateY: '0',
+          easing: 'linear'
+        });
+      }
+
+      this.commentsDisplay = !this.commentsDisplay
+    },
+    addComments(){
+      alert("添加评论")
+    },
     init(){
       this.nowMoment = moment();
       this.dayPassed = this.toChineseBig(this.nowMoment.diff(this.arriveMoment,"days"))
@@ -133,7 +156,12 @@ export default {
       }
       // 将结果数组转换成字符串，并使用正则替换一些关键位置，让结果符合语法
       // return result.join('').replace(/(零[仟佰拾]){1,3}/g, '零').replace(/零{2,}/g, '零').replace(/零([万亿])/g, '$1').replace(/亿万/g, '亿').replace(/零*@/g, '')
-      return result.join('').replace(/(零[千百十]){1,3}/g, '零').replace(/零{2,}/g, '零').replace(/零([万亿])/g, '$1').replace(/亿万/g, '亿').replace(/零*@/g, '')
+      let answer = result.join('').replace(/(零[千百十]){1,3}/g, '零').replace(/零{2,}/g, '零').replace(/零([万亿])/g, '$1').replace(/亿万/g, '亿').replace(/零*@/g, '')
+
+      if (answer.indexOf("一十") === 0){
+        return answer.replace("一十","十");
+      }else
+        return answer;
 
       function numToChinese(n) {
         // let chineseBigNum = '零壹贰叁肆伍陆柒捌玖'
@@ -145,6 +173,13 @@ export default {
       window.location.href="https://ccurj.oss-cn-beijing.aliyuncs.com/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%20%E5%8C%85%E9%BE%99.pdf"
     }
   },
+  filters:{
+    ten(val){
+      if (val.indexOf("一十") === 0){
+        return val.replace("一十","十");
+      }
+    }
+  }
 
 }
 </script>
@@ -158,5 +193,11 @@ export default {
 @keyframes light {
   from{opacity:1}
   to{opacity:0.80}
+}
+
+.b-back-image{
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
+  background-repeat: repeat;
+  background-size: 40px;
 }
 </style>
