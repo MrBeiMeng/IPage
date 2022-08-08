@@ -1,18 +1,28 @@
 <template>
   <div id="homeViewId">
 
-    <div style="height: 100vh;display: flex;flex-wrap: nowrap;align-items: center;flex-direction: row;overflow: scroll;background-color: #fafafa;" class="b-back-image">
-      <div style="position:relative;top:0;width: 100vw;height: 100vh;overflow: hidden;flex-shrink:0">
+    <div style="height: 100vh;display: flex;flex-wrap: nowrap;align-items: center;flex-direction: row;overflow: scroll;background-color: #f3f6fd;" class="b-back-image">
+      <div v-show="!loaded" style="position:relative;top:0;width: 100vw;height: 100vh;overflow: hidden;flex-shrink:0;">
 
         <!-- 左上角日期标志 -->
         <div style="position:absolute;top: 100px;left: 100px;font-size: 30px;color: #6e158f">
           {{ nowMoment.format("YYYY - M") }}
         </div>
 
-        <!-- 右上角标志 -->
-        <div style="position:absolute;top: 100px;right: 100px;font-size: 30px;color: gray;cursor: pointer;border-radius: 10px;border: 2px gray solid;display: flex;align-items: center;height: 42px">
-          <span style="font-size: 41px">☀</span><span>/🌙</span>
+        <div style="position:absolute;top: 100px;right: 100px;">
+          <nav style="position:relative;display: inline-block;font-size: 30px;padding: 0 30px 0 30px">
+            <a href="http://49.232.214.227:9527/swagger-ui/index.html" style="position: relative; bottom: 4px;">api管理</a>
+          </nav>
+
+          <!-- 右上角标志 -->
+          <div style="display: inline-block">
+            <div style="font-size: 30px;color: gray;cursor: pointer;border-radius: 10px;border: 2px gray solid;display: flex;align-items: center;height: 42px" @click="dayOrNight">
+              <span style="font-size: 41px">☀</span><span>/🌙</span>
+            </div>
+          </div>
+
         </div>
+
 
         <div style="position:absolute;width: 100%;height: 100%;z-index: -1;pointer-events: none;background: #fafafa;"/>
 
@@ -42,9 +52,9 @@
 
         <div style="position:absolute;bottom: 0;height: 100px;left: 50%;transform: translateX(-50%);margin-bottom: 120px">
           <div style="position:relative;">
-            <div style="font-size: 21px;font-weight:bolder;color:#666666;line-height: 30px;position:relative;bottom:0;text-align: center;opacity:0;transform: translateY(100%)" id="comments">
-              <span>马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。</span> <br>
-              <span style="font-size: 16px;float: right">-- 席慕容 《青春》</span>
+            <div v-if="content.length !== 0" style="font-size: 21px;font-weight:bolder;color:#666666;line-height: 30px;position:relative;bottom:0;text-align: center;opacity:0;transform: translateY(100%)" id="comments">
+              <span>{{ content[contentIndex].content }}</span><br>
+              <span style="font-size: 16px;float: right">--{{ content[contentIndex].fromBook }}</span>
 <!--              <div style="position:absolute;right: 0;cursor: pointer;display: inline-block">-->
 <!--                ⬆️-->
 <!--              </div>-->
@@ -67,10 +77,12 @@
           </button>
         </div>
       </div>
-
+      <div v-if="loaded" style="position:relative;top:0;width: 100vw;height: 100vh;display: flex;align-items: center;justify-content: center">
+        <h1>正在巨力加载。</h1>
+      </div>
     </div>
 
-    <div style="width: 100vw;height: 100vh;background: #fafafa;">
+    <div style="width: 100vw;height: 100vh;background: #f3f6fd;">
       热爱可抵岁月漫长。🦜
     </div>
 
@@ -81,6 +93,7 @@
 <script>
 import moment from "moment";
 import anime from "animejs";
+import {getComments} from "@/api/bl-server";
 
 export default {
   name: 'homeView',
@@ -90,41 +103,61 @@ export default {
       arriveMoment:moment("2022/7/26 23:20", "YYYY/MM/DD hh:mm"),
       nowMoment:null,
       dayPassed:0,
-      process:0
+      process:0,
+      content:[
+        {content:"马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。",fromBook:"《破窑赋》",author:""},
+        {content:"马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。",fromBook:"《破窑赋》",author:""},
+      ],
+      contentIndex:0,
+      loaded:true
     }
   },
   mounted() {
+    document.fonts.ready.then(()=> {
+      // 字体加载完成后的逻辑
+      this.loaded = false
+    });
     this.init();
     setInterval(()=>{
       this.init();
       this.process = this.nowMoment.hour() / 24 * 100;
       console.log("A second passed ...")
     },1000)
+
+    getComments(1).then(res=>{
+      this.content = res.data.rows;
+    })
   },
   methods:{
+    dayOrNight(){
+      alert("主题切换功能暂不支持。")
+    },
     showComments(){
-      if (this.commentsDisplay){
-        anime({
-          targets: '#comments',
-          duration: 400,
-          opacity:0,
-          translateY: '100%',
-          easing: 'linear'
-        });
-      }else{
-        anime({
-          targets: '#comments',
-          duration: 500,
-          opacity:1,
-          translateY: '0',
-          easing: 'linear'
-        });
-      }
+      if (this.content.length !== 0){
+        if (this.commentsDisplay){
+          anime({
+            targets: '#comments',
+            duration: 400,
+            opacity:0,
+            translateY: '100%',
+            easing: 'linear'
+          });
+        }else{
+          this.contentIndex = (this.contentIndex+1)%this.content.length
+          anime({
+            targets: '#comments',
+            duration: 500,
+            opacity:1,
+            translateY: '0',
+            easing: 'linear'
+          });
+        }
 
-      this.commentsDisplay = !this.commentsDisplay
+        this.commentsDisplay = !this.commentsDisplay
+      }
     },
     addComments(){
-      alert("添加评论")
+      this.dialogVisible = true
     },
     init(){
       this.nowMoment = moment();
@@ -196,7 +229,7 @@ export default {
 }
 
 .b-back-image{
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
+  background-image: linear-gradient(to top, #f3f6fd, rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
   background-repeat: repeat;
   background-size: 40px;
 }
