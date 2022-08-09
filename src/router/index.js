@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ResumeStatusView from "@/views/ResumeStatusView";
 
 Vue.use(VueRouter)
 
@@ -10,13 +11,18 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../components/Loading.vue')
+  // }
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/Loading.vue')
+    path: '/resumeStatus',
+    name: 'resumeStatus',
+    component: ResumeStatusView
   }
 ]
 

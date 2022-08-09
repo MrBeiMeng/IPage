@@ -11,6 +11,7 @@
 
         <div style="position:absolute;top: 100px;right: 100px;">
           <nav style="position:relative;display: inline-block;font-size: 30px;padding: 0 30px 0 30px">
+            <router-link v-show="showResumeStatus" to="/resumeStatus" style="position: relative; bottom: 4px;">简历投递</router-link>
             <a href="http://49.232.214.227:9527/swagger-ui/index.html" style="position: relative; bottom: 4px;">api管理</a>
           </nav>
 
@@ -35,12 +36,12 @@
             </div>
           </div>
 
-          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 867px;text-shadow: -7px 14px 20px #adadad;">
+          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 960px;text-shadow: -7px 14px 20px #adadad;">
             <div style="display: inline-block">
               <div>
                 <span style="cursor: pointer;" @click="showComments" @dblclick.capture="addComments">🪧</span><span>深圳之行</span>
               </div>
-              <div style="font-size: 12px;color: rgb(155 155 155);">
+              <div @click="showResumeStatus = !showResumeStatus" style="font-size: 12px;color: rgb(155 155 155);">
                 Trip to Shenzhen
               </div>
             </div>
@@ -54,14 +55,7 @@
           <div style="position:relative;">
             <div v-if="content.length !== 0" style="font-size: 21px;font-weight:bolder;color:#666666;line-height: 30px;position:relative;bottom:0;text-align: center;opacity:0;transform: translateY(100%)" id="comments">
               <span>{{ content[contentIndex].content }}</span><br>
-              <span style="font-size: 16px;float: right">--{{ content[contentIndex].fromBook }}</span>
-<!--              <div style="position:absolute;right: 0;cursor: pointer;display: inline-block">-->
-<!--                ⬆️-->
-<!--              </div>-->
-
-<!--              <div style="position:absolute;right: 30px;cursor: pointer;display: inline-block">-->
-<!--                ⬇️-->
-<!--              </div>-->
+              <span style="font-size: 16px;float: right">-- {{content[contentIndex].author}} <span v-if="content[contentIndex].fromBook">《{{ content[contentIndex].fromBook }}》</span> </span>
             </div>
           </div>
         </div>
@@ -105,11 +99,11 @@ export default {
       dayPassed:0,
       process:0,
       content:[
-        {content:"马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。",fromBook:"《破窑赋》",author:""},
-        {content:"马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。",fromBook:"《破窑赋》",author:""},
+        {content:"马有千里之程，无骑不能自往；人有冲天之志，非运不能自通。",fromBook:"破窑赋",author:""},
       ],
       contentIndex:0,
-      loaded:true
+      loaded:true,
+      showResumeStatus:false
     }
   },
   mounted() {

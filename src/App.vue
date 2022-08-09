@@ -13,7 +13,7 @@
 @font-face {
   font-family: "蒙黑体";
   font-display:block;
-  src: url("./assets/font/Leefont蒙黑体.ttf");
+  src: url("./assets/font/LeefontMHT.ttf");
 }
 
 /*@font-face {*/
@@ -41,6 +41,7 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin: 0 15px;
 }
 
 nav a.router-link-exact-active {
