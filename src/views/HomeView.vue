@@ -39,7 +39,7 @@
           <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 960px;text-shadow: -7px 14px 20px #adadad;">
             <div style="display: inline-block">
               <div>
-                <span style="cursor: pointer;" @click="showComments" @dblclick.capture="addComments">🪧</span><span>深圳之行</span>
+                <span style="cursor: pointer;" @click="showComments" @dblclick.capture="changeCommentType">🪧</span><span>深圳之行</span>
               </div>
               <div @click="showResumeStatus = !showResumeStatus" style="font-size: 12px;color: rgb(155 155 155);">
                 Trip to Shenzhen
@@ -61,7 +61,7 @@
         </div>
 
         <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: rgb(155 155 155);;font-family: 蒙黑体">
-          Arrive at 2022/7/26 23:20
+          Arrive at 2022/7/26 23:20 {{commentsType.value === 1?"😋":"👿"}}
         </div>
 
         <div style="position:absolute;right: 20px;bottom: 20px;">
@@ -103,7 +103,11 @@ export default {
       ],
       contentIndex:0,
       loaded:true,
-      showResumeStatus:false
+      showResumeStatus:false,
+      commentsType:{
+        value:1,
+        name:""
+      }
     }
   },
   mounted() {
@@ -120,7 +124,9 @@ export default {
 
     getComments(1).then(res=>{
       this.content = res.data.rows;
+      setTimeout(()=>this.showComments(),500)
     })
+
   },
   methods:{
     dayOrNight(){
@@ -133,14 +139,14 @@ export default {
             targets: '#comments',
             duration: 400,
             opacity:0,
-            translateY: '100%',
+            translateY: '50%',
             easing: 'linear'
           });
         }else{
           this.contentIndex = (this.contentIndex+1)%this.content.length
           anime({
             targets: '#comments',
-            duration: 500,
+            duration: 600,
             opacity:1,
             translateY: '0',
             easing: 'linear'
@@ -150,8 +156,29 @@ export default {
         this.commentsDisplay = !this.commentsDisplay
       }
     },
-    addComments(){
-      this.dialogVisible = true
+    changeCommentType(){
+      if (this.commentsType.value === 1){
+        this.commentsType = {value: 2,name:"消极的"}
+        getComments(this.commentsType.value).then(res=>{
+          this.content = res.data.rows;
+          this.$notify({
+            title: `👿Change to NEGATIVE![${this.content.length}]`,
+            type: 'warning',
+            position: 'bottom-right'
+          });
+        })
+      }else {
+        this.commentsType = {value: 1,name:"positive"}
+        getComments(this.commentsType.value).then(res=>{
+          this.content = res.data.rows;
+          this.$notify({
+            title: `🥰Change to POSITIVE![${this.content.length}]`,
+            type: 'success',
+            position: 'bottom-left'
+          });
+        })
+
+      }
     },
     init(){
       this.nowMoment = moment();
@@ -223,7 +250,7 @@ export default {
 }
 
 .b-back-image{
-  background-image: linear-gradient(to top, #f3f6fd, rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
+  background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
   background-repeat: repeat;
   background-size: 40px;
 }
