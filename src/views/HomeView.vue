@@ -6,13 +6,16 @@
 
         <!-- 左上角日期标志 -->
         <div style="position:absolute;top: 100px;left: 100px;font-size: 30px;color: #6e158f">
-          {{ nowMoment.format("YYYY - M") }}
+          <span>{{nowMoment.format("YYYY - M")}}</span>
+
         </div>
 
-        <div style="position:absolute;top: 100px;right: 100px;">
-          <nav style="position:relative;display: inline-block;font-size: 30px;padding: 0 30px 0 30px">
-            <router-link v-show="showResumeStatus" to="/resumeStatus" style="position: relative; bottom: 4px;">简历投递</router-link>
-            <a href="http://49.232.214.227:9527/swagger-ui/index.html" style="position: relative; bottom: 4px;">api管理</a>
+        <div style="position:absolute;top: 95px;right: 100px;">
+          <nav style="position:relative;display: inline-block;font-size: 30px;padding: 0 30px 0 30px;bottom: 3px">
+            <router-link v-show="!$store.getters.name" to="/login" style="position: relative; ">登录</router-link>
+            <a v-show="$store.getters.name" @click="logout" style="position: relative;cursor: pointer">{{ $store.getters.name }}</a>
+            <router-link v-show="showResumeStatus||$store.getters.name" to="/resumeStatus" style="position: relative;">简历投递</router-link>
+            <a href="http://49.232.214.227:9527/swagger-ui/index.html" style="position: relative;">api管理</a>
           </nav>
 
           <!-- 右上角标志 -->
@@ -61,7 +64,7 @@
         </div>
 
         <div style="position:absolute;bottom: 20px;left: 20px;font-size: 20px;color: rgb(155 155 155);;font-family: 蒙黑体">
-          Arrive at 2022/7/26 23:20 {{commentsType.value === 1?"😋":"👿"}}
+          Arrive at 2022/7/26 23:20 <span style="cursor:pointer;" @click="changeCommentType">{{commentsType.value === 1?"😋":"👿"}}</span>
         </div>
 
         <div style="position:absolute;right: 20px;bottom: 20px;">
@@ -129,6 +132,9 @@ export default {
 
   },
   methods:{
+    logout(){
+      this.$store.dispatch("user/logout")
+    },
     dayOrNight(){
       alert("主题切换功能暂不支持。")
     },
@@ -164,7 +170,7 @@ export default {
           this.$notify({
             title: `👿Change to NEGATIVE![${this.content.length}]`,
             type: 'warning',
-            position: 'bottom-right'
+            position: 'top-right'
           });
         })
       }else {
@@ -174,7 +180,7 @@ export default {
           this.$notify({
             title: `🥰Change to POSITIVE![${this.content.length}]`,
             type: 'success',
-            position: 'bottom-left'
+            position: 'top-left'
           });
         })
 

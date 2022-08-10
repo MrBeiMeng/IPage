@@ -13,7 +13,6 @@ export function login(loginForm) {
     url: '/auth/login',
     method: 'post',
     data: loginForm
-    // loginForm
   })
 }
 

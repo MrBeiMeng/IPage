@@ -10,6 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
+import '@/permission' // permission control
+
 new Vue({
   router,
   store,
