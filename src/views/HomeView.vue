@@ -39,7 +39,7 @@
             </div>
           </div>
 
-          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 960px;text-shadow: -7px 14px 20px #adadad;">
+          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 960px;"> <!-- text-shadow: -7px 14px 20px #adadad; -->
             <div style="display: inline-block">
               <div>
                 <span style="cursor: pointer;" @click="showComments" @dblclick.capture="changeCommentType">🪧</span><span>深圳之行</span>
@@ -79,11 +79,198 @@
       </div>
     </div>
 
-    <div style="width: 100vw;height: 100vh;background: #f3f6fd;">
-      热爱可抵岁月漫长。🦜
+    <div style="position:relative;width: 100vw;height: 100vh;background: #f3f6fd;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-direction: column">
+      <div style="margin: 20px 0;position:absolute;top: 60px;">
+        <h1>积累 - 收藏</h1>
+        <h3>Accumulation - Collections</h3>
+      </div>
+      <div style="width: 1280px;height: 500px;background: #42b983;border-radius: 10px;box-shadow: inset grey 3px 3px 16px 0 ,grey -2px -1px 16px 0 inset;;">
+        <h1 style="margin: 20px 0;">热爱可抵岁月漫长🦜</h1>
+        <div style="width: 1380px;position:relative;left: 50%; transform: translate(-50%);">
+          <!-- 使用栅格系统 -->
+          <el-row :gutter="50">
+            <el-col :span="8">
+              <div class="grid-content bg-wheat">
+                <div style="font-weight: bold;font-size: 20px;padding: 20px 10px 2px 10px;color: #2c3e50">项目：projects</div>
+                <span style="display:inline-block;width: 15px;height: 4px;background: #ffa644"></span>
+                <!-- 元素列表 -->
+                <div>
+                  <el-popover
+                      placement="right"
+                      width="400"
+                      trigger="hover">
+                    <div>
+                      <el-descriptions title="JES邮件服务" :column="1">
+                        <el-descriptions-item label="项目描述">一个类似 短信服务 的邮件系统，主要功能是进行 邮件发送 应用场景为 （发送邮件验证码、邮件通知）、用户管理（用户
+                          发件量限制）、邮件过滤、账号配置等。其优势相比于普通的springboot整合邮箱，实现了不同平台邮箱配置，也可以对用
+                          户发送的邮件进行过滤与控制。系统复杂点在于账号任务分配、最佳线程数量以及发件速度。</el-descriptions-item>
+                        <el-descriptions-item label="代码地址"><a
+                            href="https://gitee.com/beimengclub/java-email-server">gitee</a> </el-descriptions-item>
+                        <el-descriptions-item label="演示网址">暂无</el-descriptions-item>
+                        <el-descriptions-item label="技术栈" class="tag-group">
+                          <el-tag size="small" >springboot</el-tag>
+                          <el-tag size="small">mybatis-plus</el-tag>
+                          <el-tag style="margin-right: 3px" size="small">email</el-tag>
+                          <el-tag style="margin-right: 3px" size="small">jsp</el-tag>
+                          <el-tag style="margin-right: 3px" size="small">logback</el-tag>
+                        </el-descriptions-item>
+                        <el-descriptions-item label="备注">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
+                      </el-descriptions>
+                    </div>
+                    <!-- 单个元素 -->
+                    <div slot="reference">
+                      <!-- 内容列表 -->
+                      <div style="text-align: left;padding: 10px 20px">
+                        <!-- 第一行 -->
+                        <div >
+                          <span style="font-size: 17px;font-weight: bold">JES邮件服务</span>
+                          <span style="position:relative;float: right">22-8 至 22-12</span>
+                        </div>
+                        <div style="text-align:left;font-size: 14px;font-weight: bolder;padding:10px 15px 0 15px;color: gray">
+                          <span style="margin-right: 30px">&lt;/&gt; Java,sql</span>
+                          <!--                        <span style="display: inline-block;position:absolute;right: 0;transform: translate(-50%)">邮件式"短信服务"</span>-->
+                          <span style="position:absolute;left: 188px">描述： 邮件式"短信服务"</span>
+                        </div>
+                      </div>
+                      <div style="width: 60%;height: 2px;background: rgba(128,128,128,0.45);margin: 0 auto;"></div>
+                    </div>
+                  </el-popover>
+
+
+                  <!-- 单个元素 -->
+                  <div>
+                    <!-- 内容列表 -->
+                    <div style="text-align: left;padding: 10px 20px">
+                      <!-- 第一行 -->
+                      <div >
+                        <span style="font-size: 17px;font-weight: bold">吉林省志愿服务平台</span>
+                        <span style="position:relative;float: right">22-8 至 22-12</span>
+                      </div>
+                      <div style="text-align:left;font-size: 14px;font-weight: bolder;padding:10px 15px 0 15px;color: gray">
+                        <span style="margin-right: 30px">&lt;/&gt; Java,sql,Js</span>
+                        <!--                        <span style="display: inline-block;position:absolute;right: 0;transform: translate(-50%)">邮件式"短信服务"</span>-->
+                        <span style="position:absolute;left: 188px">描述： 邮件式"短信服务"</span>
+                      </div>
+                    </div>
+                    <div style="width: 60%;height: 2px;background: rgba(128,128,128,0.45);margin: 0 auto;"></div>
+                  </div>
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content bg-wheat">
+                <div style="font-weight: bold;font-size: 20px;padding: 20px 10px 2px 10px">笔记：notebooks</div>
+                <span style="display:inline-block;width: 15px;height: 4px;background: #ffa644"></span>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content bg-wheat">
+                <div style="font-weight: bold;font-size: 20px;padding: 20px 10px 2px 10px">小工具：other</div>
+                <span style="display:inline-block;width: 15px;height: 4px;background: #ffa644"></span>
+              </div>
+            </el-col>
+          </el-row>
+
+        </div>
+      </div>
+
+      <div style="margin: 20px 0;position:absolute;bottom: 30px;width: 60vw">
+        <div style="height: 13px;background: rgb(102 102 102 / 22%);border-radius: 10px;">
+          <div style="height: 13px;background: #7d42b8;border-radius: 10px;width: 60%;margin: 0 auto">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div style="position:relative;width: 100vw;height: 100vh;background: #f3f6fd;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-direction: column">
+      <div style="margin: 20px 0;position:absolute;top: 60px;">
+        <h1>知识 - 脉络</h1>
+        <h3>Knowledge - venation</h3>
+      </div>
+      <div>
+        <img src="../assets/AJAXx.jpg" style="" alt="">
+      </div>
+<!--      <div style="width: 80vw;">-->
+<!--        <el-carousel :interval="5000" arrow="always" height="600px" indicator-position="outside">-->
+<!--          <el-carousel-item >-->
+<!--            <div style="width: 100%;height: 100%;display: flex;align-items: center;justify-content: center">-->
+<!--              <img src="../assets/AJAXx.jpg" style="" alt="">-->
+<!--            </div>-->
+<!--          </el-carousel-item>-->
+<!--          <el-carousel-item >-->
+<!--            <div style="width: 100%;height: 100%;display: flex;align-items: center;justify-content: center">-->
+<!--              <img src="../assets/AJAXx.jpg" style="" alt="">-->
+<!--            </div>-->
+<!--          </el-carousel-item>-->
+<!--        </el-carousel>-->
+<!--      </div>-->
     </div>
 
+    <div style="position:relative;width: 100vw;background: #666666;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-direction: column">
+      <div style="width: 1280px;color: #fafafa;padding: 30px">
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <h1>坐而言不如起而行</h1>
+          </el-col>
+          <el-col :span="18">
+            <div style="width: 273px;text-align: left;margin: 0 auto">
+              <div>
+                <div style="width: 100px;text-align: right;display: inline-block">
+                  电话 <i class="el-icon-phone-outline"></i>：
+                </div>
+                <div style="display: inline-block">
+                  <el-popover
+                      placement="top-start"
+                      title="扫码添加我的电话"
+                      width="150"
+                      trigger="hover"
+                  >
+                    <div>
+                      <img src="../assets/包龙个人名片.png" alt="">
+                    </div>
+                    <div slot="reference" style="text-decoration: underline;">
+                      18547538016
+                    </div>
+                  </el-popover>
+                </div>
+              </div>
+              <div>
+                <div style="width: 100px;text-align: right;display: inline-block">
+                  位置 <i class="el-icon-location-information"></i>：
+                </div>
+                <div style="display: inline-block">
+                  深圳市
+                </div>
+              </div>
+              <div>
+                <div style="width: 100px;text-align: right;display: inline-block">
+                  邮箱 <i class="el-icon-message"></i>：
+                </div>
+                <div style="display: inline-block">
+                  <el-tooltip content="点击给我发送EMAIL" placement="right" effect="light">
+                    <a href="mailto:baolong@baolong.email" style="color: #fafafa">baolong@baolong.email</a>
+                  </el-tooltip>
+                </div>
+              </div>
+            </div>
 
+          </el-col>
+        </el-row>
+      </div>
+    </div>
+
+    <!-- 回到顶部 -->
+    <el-backtop  :bottom="100">
+      <div
+          style="{
+        text-align: center;
+        line-height: 40px;
+        color: #1989fa;
+      }"
+      >
+        <img src="../assets/火箭.png" alt="">
+      </div>
+    </el-backtop>
   </div>
 </template>
 
@@ -96,7 +283,7 @@ export default {
   name: 'homeView',
   data(){
     return{
-      commentsDisplay:false,
+      commentsDisplay:true,
       arriveMoment:moment("2022/7/26 23:20", "YYYY/MM/DD hh:mm"),
       nowMoment:null,
       dayPassed:0,
@@ -141,6 +328,16 @@ export default {
     showComments(){
       if (this.content.length !== 0){
         if (this.commentsDisplay){
+          setTimeout(()=>{
+            anime({
+              targets: '#comments',
+              duration: 600,
+              opacity:1,
+              translateY: '0',
+              easing: 'linear'
+            });
+            this.contentIndex = (this.contentIndex+1)%this.content.length
+          },600)
           anime({
             targets: '#comments',
             duration: 400,
@@ -148,19 +345,30 @@ export default {
             translateY: '50%',
             easing: 'linear'
           });
-        }else{
-          this.contentIndex = (this.contentIndex+1)%this.content.length
-          anime({
-            targets: '#comments',
-            duration: 600,
-            opacity:1,
-            translateY: '0',
-            easing: 'linear'
-          });
         }
-
-        this.commentsDisplay = !this.commentsDisplay
       }
+      // if (this.content.length !== 0){
+      //   if (this.commentsDisplay){
+      //     anime({
+      //       targets: '#comments',
+      //       duration: 400,
+      //       opacity:0,
+      //       translateY: '50%',
+      //       easing: 'linear'
+      //     });
+      //   }else{
+      //     this.contentIndex = (this.contentIndex+1)%this.content.length
+      //     anime({
+      //       targets: '#comments',
+      //       duration: 600,
+      //       opacity:1,
+      //       translateY: '0',
+      //       easing: 'linear'
+      //     });
+      //   }
+      //
+      //   this.commentsDisplay = !this.commentsDisplay
+      // }
     },
     changeCommentType(){
       if (this.commentsType.value === 1){
@@ -256,8 +464,33 @@ export default {
 }
 
 .b-back-image{
-  background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/always-grey.png");
+  background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/diagonal-striped-brick.png");
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/food.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/always-grey.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/cartographer.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/cubes.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/triangles.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/white-tiles.png");*/
+  /*background-image: linear-gradient(to top, #f3f6fd,#f3f6fd00, rgba(255, 255, 255, 0)), url("../assets/纹理素材/shattered (1).png");*/
   background-repeat: repeat;
-  background-size: 40px;
+  /*background-size: 40px;*/
 }
+
+
+.bg-purple {
+  background: #c965ec;
+}
+
+.bg-wheat {
+  background: #fafafa;
+
+}
+.grid-content {
+  border-radius: 10px;
+  min-height: 500px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  color: #2c3e50;
+}
+
+
 </style>
