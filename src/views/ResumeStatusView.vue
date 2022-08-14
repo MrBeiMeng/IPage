@@ -28,6 +28,7 @@
           element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)"
           :data="tableData"
+          :row-class-name="tableRowClassName"
           border
           style="width: 100%">
         <el-table-column
@@ -47,7 +48,7 @@
             label="投递情况"
             width="80">
           <template slot-scope="scope">
-            {{scope.row.postSituation === 1?"未投递":"已投递"}}
+            {{scope.row.postSituation === 1?"未投递":scope.row.postSituation === 2?"已投递":"已放弃"}}
           </template>
         </el-table-column>
         <el-table-column
@@ -104,6 +105,7 @@
             width="110">
           <template slot-scope="scope">
             <el-popover
+                v-if="scope.row.companyAddress"
                 placement="right-start"
                 :title="'🔹' + scope.row.company"
                 width="200"
@@ -192,6 +194,13 @@ export default {
       addResumes(this.commentsForm).then(res=>{
         // todo 添加成功
       })
+    },
+    tableRowClassName({row, rowIndex}) {
+      if (row.postSituation === 3){
+        return 'abandon-row'
+      }
+
+      return ''
     }
   },
   filters:{
@@ -202,6 +211,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.el-table .abandon-row{
+  background: #c0c4cc;
+}
 </style>
