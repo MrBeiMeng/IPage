@@ -33,15 +33,20 @@
           style="width: 100%">
         <el-table-column
             label="序号"
-            width="60">
+            width="50">
           <template slot-scope="scope">
             {{ scope.$index+1 }}
           </template>
         </el-table-column>
         <el-table-column
-            prop="company"
             label="公司"
-            width="150">
+            width="200">
+          <template slot-scope="scope">
+            <div style="display: flex;align-items: center">
+              <img v-if="scope.row.logo" width="30px" style="border-radius: 3px;padding:0 5px 0 5px" :src="scope.row.logo" alt="" :style="{opacity:scope.row.postSituation === 3?0.3:1}">
+              <span>{{scope.row.company}}</span>
+            </div>
+          </template>
         </el-table-column>
         <el-table-column
             prop="postSituation"
@@ -65,61 +70,50 @@
             width="150">
         </el-table-column>
         <el-table-column
-            prop="status"
-            label="🔻目前进展🔻"
-            width="150">
-        </el-table-column>
-        <el-table-column
-            prop="remark"
-            label="备注信息"
-            width="250">
-        </el-table-column>
-        <el-table-column
             prop="resume"
             label="📜投递简历"
-            width="150">
+            width="200">
           <template slot-scope="scope">
             <a v-if="scope.row.resume" :href="scope.row.resume.link">{{scope.row.resume.title}}</a>
           </template>
+        </el-table-column>
+        <el-table-column
+            prop="status"
+            label="🔻目前进展🔻"
+            width="150">
         </el-table-column>
         <el-table-column
             prop="priority"
             label="优先级"
             width="90">
           <template slot-scope="scope">
-            {{scope.row.priority === 1?"一般":(scope.row.priority === 2?"❗重要":"‼️很重要")}}
+            {{scope.row.priority === 1?"一般":(scope.row.priority === 2?"❗重要":"🔔很重要")}}
           </template>
         </el-table-column>
         <el-table-column
-            prop="jobData"
-            label="面试资料"
-            width="150">
+            prop="remark"
+            label="备注信息">
           <template slot-scope="scope">
-            <a v-if="scope.row.jobData" :href="scope.row.jobData">{{ scope.row.jobData.substring(0, 19) }}...</a>
+            <div v-html="scope.row.remark"></div>
           </template>
         </el-table-column>
-
         <el-table-column
-            prop="companyAddress"
-            label="公司地址"
-            width="110">
+            label="操作"
+            width="70">
           <template slot-scope="scope">
             <el-popover
-                v-if="scope.row.companyAddress"
-                placement="right-start"
-                :title="'🔹' + scope.row.company"
-                width="200"
-                trigger="hover"
-                :content="'💼' + scope.row.companyAddress">
-              <span slot="reference">{{ scope.row.companyAddress.substring(0, 5) }}...</span>
+                placement="left-start"
+                width="580"
+                trigger="hover">
+              <div slot="reference"> <el-tag>详情</el-tag> </div>
+              <el-descriptions :title="'🔹' + scope.row.company" :column="1">
+                <el-descriptions-item label="公司规模">{{ scope.row.companySize }}</el-descriptions-item>
+                <el-descriptions-item label="公司官网"><a v-if="scope.row.companyLink" :href="scope.row.companyLink">{{ scope.row.companyLink.substring(0, 30) }}...</a></el-descriptions-item>
+                <el-descriptions-item label="面试准备">{{ scope.row.jobData | urlFormat }}</el-descriptions-item>
+                <el-descriptions-item label="地址"> <span v-if="scope.row.companyAddress"><i class="el-icon-location-information" style="color: #42b983;"></i>{{'💼' + scope.row.companyAddress}}</span></el-descriptions-item>
+                <el-descriptions-item label="备注信息"><div v-html="scope.row.remark"></div></el-descriptions-item>
+              </el-descriptions>
             </el-popover>
-          </template>
-        </el-table-column>
-        <el-table-column
-            prop="companyLink"
-            label="网址">
-          <template slot-scope="scope">
-            <a v-if="scope.row.companyLink" :href="scope.row.companyLink">{{ scope.row.companyLink.substring(0, 30) }}...</a>
           </template>
         </el-table-column>
       </el-table>
@@ -196,6 +190,7 @@ export default {
       })
     },
     tableRowClassName({row, rowIndex}) {
+      console.log(row)
       if (row.postSituation === 3){
         return 'abandon-row'
       }
@@ -204,15 +199,31 @@ export default {
     }
   },
   filters:{
+    urlFormat(url){
+      if (url)
+        return decodeURI(url);
+      return url;
+    },
     timeFormat(time){
-      return  moment(time).format("YY-MM-DD")
+      if (time){
+        return  moment(time).format("YY-MM-DD")
+      }
+      return '';
     }
   }
 }
 </script>
 
-<style>
-.el-table .abandon-row{
-  background: #c0c4cc;
+<style scoped>
+
+
+a:before{
+  content:"🌐";
+}
+
+a{
+  text-decoration: none;
+  color: #259866;
+  font-weight: 530;
 }
 </style>

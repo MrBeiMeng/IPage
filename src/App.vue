@@ -48,6 +48,10 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.el-table .abandon-row{
+  background: #c0c4cc;
+}
 </style>
 <script>
 
