@@ -90,7 +90,7 @@
           <!-- 使用栅格系统 -->
           <el-row :gutter="50">
             <el-col :span="8">
-              <div class="grid-content bg-wheat">
+              <div class="grid-content bg-wheat wow bounceInUp">
                 <div style="font-weight: bold;font-size: 20px;padding: 20px 10px 2px 10px;color: #2c3e50">项目：projects</div>
                 <span style="display:inline-block;width: 15px;height: 4px;background: #ffa644"></span>
                 <!-- 元素列表 -->
@@ -152,7 +152,7 @@
                         <span style="position:absolute;left: 188px">描述： 邮件式"短信服务"</span>
                       </div>
                     </div>
-                    <div style="width: 60%;height: 2px;background: rgba(128,128,128,0.45);margin: 0 auto;"></div>
+                    <div style="width: 100%;height: 2px;background: rgba(128,128,128,0.45);margin: 0 auto;transition:width 2s"></div>
                   </div>
                 </div>
               </div>

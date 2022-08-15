@@ -12,6 +12,8 @@ Vue.use(ElementUI);
 
 import '@/permission' // permission control
 
+import 'animate.css';
+
 new Vue({
   router,
   store,
