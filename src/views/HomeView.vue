@@ -187,6 +187,61 @@
         <h1>知识 - 脉络</h1>
         <h3>Knowledge - venation</h3>
       </div>
+
+      <!-- 侧边连 -->
+      <div style="position:absolute;left: 0;top: 50%">
+        <div>
+          <el-button @click="venationDrawer = !venationDrawer">换</el-button>
+        </div>
+
+        <el-drawer
+            title="知识分类清单"
+            :visible.sync="venationDrawer"
+            direction="ltr"
+            >
+          <el-collapse v-model="venationDrawer_ActiveName">
+            <el-collapse-item name="1">
+              <template slot="title">
+                <h2 style="width: 100%;text-align: left;padding-left: 60px">JAVA分类<i class="header-icon el-icon-info"></i></h2>
+              </template>
+              <div style="font-size: 18px;font-weight: bold;width: 100%">
+                <!-- 内层 -->
+                <div style="margin: 0 auto;text-align: left;max-width: 375px;cursor: pointer">
+                  <div>
+                    <span>1. </span><span>JVM 概览图</span>
+                  </div>
+
+                  <div>
+                    <span>2. </span><span>String 概览图</span>
+                  </div>
+                </div>
+              </div>
+            </el-collapse-item>
+
+            <el-collapse-item name="2">
+              <h2 style="text-align: center;width: 100%">操作系统<i class="header-icon el-icon-info"></i></h2>
+              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+            </el-collapse-item>
+
+            <el-collapse-item name="3">
+              <template slot="title">
+                <h2 style="width: 100%;text-align: left;padding-left: 60px">计算机网络<i class="header-icon el-icon-info"></i></h2>
+              </template>
+              <div style="font-size: 18px;font-weight: bold;width: 100%">
+                <!-- 内层 -->
+                <div style="margin: 0 auto;text-align: left;max-width: 375px;cursor: pointer">
+                  <div style="color: #42b983">
+                    <span>1. </span><span>Ajax 技术</span><span style="color: #42b983;font-weight: bolder;padding-left: 30px"><<<</span>
+                  </div>
+                </div>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+        </el-drawer>
+
+      </div>
+
       <div>
         <img src="../assets/AJAXx.jpg" style="" alt="">
       </div>
@@ -283,6 +338,9 @@ export default {
   name: 'homeView',
   data(){
     return{
+      venationDrawer:false,// 脉络抽屉展示
+      venationDrawer_ActiveName:['1','2','3','4'],
+
       commentsDisplay:true,
       arriveMoment:moment("2022/7/26 23:20", "YYYY/MM/DD hh:mm"),
       nowMoment:null,
