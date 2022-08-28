@@ -167,6 +167,13 @@
               <div class="grid-content bg-wheat">
                 <div style="font-weight: bold;font-size: 20px;padding: 20px 10px 2px 10px">小工具：other</div>
                 <span style="display:inline-block;width: 15px;height: 4px;background: #ffa644"></span>
+                <div style="display: flex;align-items: start;justify-content: left;padding:10px 20px">
+
+                  <div style="cursor: pointer" @click="$router.push('/demo')"> <!--单个应用-->
+                    <img style="width: 59px;height: 59px;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)" src="../assets/记账logo.png" alt=""> <!--图标-->
+                    <div style="font-weight: bold;font-size: 10px">去记账</div> <!--名称-->
+                  </div>
+                </div>
               </div>
             </el-col>
           </el-row>

@@ -5,6 +5,7 @@ import ResumeStatusView from "@/views/ResumeStatusView";
 import LoginView from "@/views/LoginView";
 import NHomeView from "@/views/NHomeView";
 import UpdateLog from "@/views/UpdateLog";
+import GoA from "@/views/GoA";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/updatedLog',
     name: 'updatedLog',
     component: UpdateLog
+  },
+  {
+    path: '/demo',
+    name: 'demo', // 去记账项目
+    component: GoA
   },
   {
     path: '/n',
