@@ -8,7 +8,7 @@
 
 <!--  表格部分-->
   <div style="width: 100%;">
-    <div style="max-width: 1650px;margin: 0 auto">
+    <div style="max-width: 1650px;margin: 0 auto 154px">
       <div style="float: right">
         <el-button v-show="!addingComments" size="small" style="margin: 10px 0" @click="addingComments = !addingComments">上传简历</el-button>
 

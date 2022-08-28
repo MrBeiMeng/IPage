@@ -39,7 +39,7 @@
             </div>
           </div>
 
-          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 960px;"> <!-- text-shadow: -7px 14px 20px #adadad; -->
+          <div style="color: black;font-family: 蒙黑体;font-size: 120px;display: flex;align-items: baseline;min-width: 1034px;"> <!-- text-shadow: -7px 14px 20px #adadad; -->
             <div style="display: inline-block">
               <div>
                 <span style="cursor: pointer;" @click="showComments" @dblclick.capture="changeCommentType">🪧</span><span>深圳之行</span>
