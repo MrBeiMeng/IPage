@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ResumeStatusView from "@/views/ResumeStatusView";
 import LoginView from "@/views/LoginView";
 import NHomeView from "@/views/NHomeView";
+import UpdateLog from "@/views/UpdateLog";
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/updatedLog',
+    name: 'updatedLog',
+    component: UpdateLog
   },
   {
     path: '/n',

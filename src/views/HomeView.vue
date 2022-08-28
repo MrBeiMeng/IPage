@@ -264,10 +264,10 @@
     <div style="position:relative;width: 100vw;background: #666666;display: flex;justify-content: center;align-items: center;overflow: hidden;flex-direction: column">
       <div style="width: 1280px;color: #fafafa;padding: 30px">
         <el-row :gutter="20">
-          <el-col :span="6">
+          <el-col :span="12">
             <h1>坐而言不如起而行</h1>
           </el-col>
-          <el-col :span="18">
+          <el-col :span="12">
             <div style="width: 273px;text-align: left;margin: 0 auto">
               <div>
                 <div style="width: 100px;text-align: right;display: inline-block">
@@ -311,6 +311,13 @@
 
           </el-col>
         </el-row>
+
+        <hr style="margin: 23px 0">
+
+        <div>
+          <el-link type="info" href="https://beian.miit.gov.cn/">蒙ICP备2022002907号 •</el-link>
+          <router-link to="/updatedLog" style="color: #a6a9ad;text-decoration: none;font-size: 14px;font-weight: 500;">&nbsp;更新日志</router-link>
+        </div>
       </div>
     </div>
 

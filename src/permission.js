@@ -10,7 +10,8 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = [ // 地址白名单
   '/login',
-    '/'
+    '/',
+    '/updatedLog'
 ] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
