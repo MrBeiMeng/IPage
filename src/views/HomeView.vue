@@ -15,6 +15,7 @@
             <router-link v-show="!$store.getters.name" to="/login" style="position: relative; ">登录</router-link>
             <a v-show="$store.getters.name" @click="logout" style="position: relative;cursor: pointer">{{ $store.getters.name }}</a>
             <router-link v-show="showResumeStatus||$store.getters.name" to="/resumeStatus" style="position: relative;">简历投递</router-link>
+            <router-link to="/final" style="position: relative;">Final</router-link>
             <a href="http://49.232.214.227:9527/swagger-ui/index.html" style="position: relative;">api管理</a>
           </nav>
 

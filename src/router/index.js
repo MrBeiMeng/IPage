@@ -6,6 +6,7 @@ import LoginView from "@/views/LoginView";
 import NHomeView from "@/views/NHomeView";
 import UpdateLog from "@/views/UpdateLog";
 import GoA from "@/views/GoA";
+import FinalView from "@/views/FinalView";
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/final',
+    name: 'final',
+    component: FinalView
   },
   {
     path: '/login',

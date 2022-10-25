@@ -21,10 +21,10 @@
 /*  src: url("./assets/font/品如手写体.ttf");*/
 /*}*/
 
-/*@font-face {*/
-/*  font-family: "云峰体";*/
-/*  src: url("./assets/font/云峰静龙行书.ttf");*/
-/*}*/
+@font-face {
+  font-family: "英文手写体";
+  src: url("./assets/font/Unutterable-Italic.ttf");
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
